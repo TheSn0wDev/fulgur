@@ -13,7 +13,7 @@
 ## 🛠️ Tech Stack:
 
 - Embedded C++ with high-level modular patterns
-- SDL2 or HID API for gamepad input
+- SDL3 for gamepad input
 - WebSocket / UDP / Serial for comms
 - Optional integration with Raspberry Pi, ESP32, or other microcontrollers
 

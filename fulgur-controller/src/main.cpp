@@ -4,8 +4,8 @@
 #include <iostream>
 #include <csignal>
 #include <atomic>
-#include <SDL2/SDL_timer.h>
-#include <SDL2/SDL.h>
+#include <SDL3/SDL_timer.h>
+#include <SDL3/SDL.h>
 #include "NatsMessagingBus.hpp"
 #include "controller/PS5Controller.hpp"
 #include "utils/welcome.hpp"
