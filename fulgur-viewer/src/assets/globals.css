@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Boldonse&family=Sansation:wght@300;400;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-fulgur-blue-dark: #0a1a2f;
+  --color-fulgur-blue-dark-rgb: 10, 26, 47;
+  --color-fulgur-blue-light: #00bfff;
+  --color-fulgur-blue-light-rgb: 0, 191, 255;
+  --color-fulgur-blue: #0099ff;
+  --color-fulgur-blue-rgb: 0, 153, 255;
+  --color-fulgur-white: #dff9fb;
+  --color-fulgur-white-rgb: 223, 249, 251;
+  --color-fulgur-gray: #747d8c;
+  --color-fulgur-gray-rgb: 116, 125, 140;
+}
+
+body {
+  @apply bg-fulgur-blue-dark text-fulgur-white backdrop:bg-fulgur-blue-dark;
+  font-family: "Sansation", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sansation-light {
+  font-family: "Sansation", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.sansation-regular {
+  font-family: "Sansation", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sansation-bold {
+  font-family: "Sansation", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+#tv-noise {
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: calc(100% + 50px);
+  height: calc(100% + 50px);
+  background: repeating-linear-gradient(#111, #111 50%, white 50%, white);
+  background-size: 5px 5px;
+  filter: url(#noise);
+  pointer-events: none;
+}

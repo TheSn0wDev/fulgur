@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import { Battery } from "./components/Battery";
+import { Controller } from "./components/Controller";
+import { Signal } from "./components/Signal";
+import { Stream } from "./components/Stream";
+import { ToggleFullscreen } from "./components/ToggleFullscreen";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const handle = useFullScreenHandle();
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <FullScreen handle={handle} className="bg-fulgur-blue-dark">
+      <Stream />
+
+      <div className="absolute bottom-3 left-3 flex flex-col gap-3 justify-end items-start z-50">
+        <Signal ping={95} />
+        <Battery batteryLevel={100} isCharging={true} />
+        <Controller batteryLevel={100} isConnected={true} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
+      <div className="absolute bottom-3 right-3 flex gap-3 justify-end items-end z-50">
+        <ToggleFullscreen
+          onClick={() => (handle.active ? handle.exit() : handle.enter())}
+        />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </FullScreen>
+  );
 }
 
-export default App
+export default App;
