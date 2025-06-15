@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <SDL2/SDL.h>
+#include <SDL3/SDL.h>
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
@@ -78,6 +78,6 @@ class Controller {
         virtual json getState() const = 0;
 
     private:
-        virtual Controller::Button getButton(SDL_GameControllerButton button) = 0;
-        virtual Controller::Axis getAxis(SDL_GameControllerAxis axis) = 0;
+        virtual Controller::Button getButton(SDL_GamepadButton button) = 0;
+        virtual Controller::Axis getAxis(SDL_GamepadAxis axis) = 0;
 };

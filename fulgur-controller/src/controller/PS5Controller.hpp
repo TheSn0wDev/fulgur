@@ -14,12 +14,13 @@ class PS5Controller : public Controller {
         json getState() const override;
 
     private:
-        Controller::Button getButton(SDL_GameControllerButton button) override;
-        Controller::Axis getAxis(SDL_GameControllerAxis axis) override;
+        Controller::Button getButton(SDL_GamepadButton button) override;
+        Controller::Axis getAxis(SDL_GamepadAxis axis) override;
         void updateButtonState(Controller::Button button, bool pressed);
         void updateAxisState(Controller::Axis axis, float value);
+        void updateBatteryState(int level, bool isCharging);
         
-        SDL_GameController* _controller = nullptr;
+        SDL_Gamepad* _controller = nullptr;
         SDL_JoystickID _instance_id = -1;
         json _state = {
             {"buttons", {
@@ -47,6 +48,10 @@ class PS5Controller : public Controller {
                 {"RIGHT_Y", 0.0},
                 {"L2", 0.0},
                 {"R2", 0.0}
+            }},
+            {"battery", {
+                {"level", 0},
+                {"isCharging", false}
             }}
         };
 };
