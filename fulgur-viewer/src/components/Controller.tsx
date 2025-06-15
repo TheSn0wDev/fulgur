@@ -1,23 +1,18 @@
 import { Gamepad2 } from "lucide-react";
+import { useControllerState } from "../store/controller";
 
-interface ControllerProps {
-  batteryLevel: number;
-  isConnected: boolean;
-}
-
-export const Controller = ({
-  batteryLevel: controllerLevel,
-  isConnected,
-}: ControllerProps) => {
+export const Controller = () => {
+  const controllerState = useControllerState((state) => state.state);
   const getControllerIcon = () => {
     return <Gamepad2 />;
   };
+  const isConnected = true;
 
   const controllerLevelClass = () => {
-    if (isConnected === false) return "text-red-500";
-    if (controllerLevel >= 75) return "text-green-500";
-    if (controllerLevel >= 50) return "text-yellow-500";
-    if (controllerLevel >= 25) return "text-orange-500";
+    // if (isConnected === false) return "text-red-500";
+    if (controllerState.battery.level >= 75) return "text-green-500";
+    if (controllerState.battery.level >= 50) return "text-yellow-500";
+    if (controllerState.battery.level >= 25) return "text-orange-500";
     return "text-red-500";
   };
 
@@ -27,7 +22,10 @@ export const Controller = ({
     >
       {getControllerIcon()}
       <span className="text-xs text-fulgur-white">
-        {controllerLevel === -1 || !isConnected ? "-" : controllerLevel} %
+        {controllerState.battery.level === -1 || !isConnected
+          ? "-"
+          : controllerState.battery.level}{" "}
+        %
       </span>
     </div>
   );

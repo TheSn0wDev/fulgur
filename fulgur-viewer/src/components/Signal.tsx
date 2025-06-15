@@ -1,10 +1,9 @@
 import { SignalHigh, SignalLow, SignalMedium, SignalZero } from "lucide-react";
+import { useFulgurInfos } from "../store/fulgur";
 
-interface SignalProps {
-  ping: number;
-}
+export const Signal = () => {
+  const ping = useFulgurInfos((state) => state.infos.latency);
 
-export const Signal = ({ ping }: SignalProps) => {
   const getSignalIcon = () => {
     if (ping === -1) return <SignalZero size={20} />;
     if (ping <= 100) return <SignalHigh size={20} />;
@@ -24,9 +23,7 @@ export const Signal = ({ ping }: SignalProps) => {
       className={`flex justify-center items-center py-2 px-3 gap-1 bg-[rgba(var(--color-fulgur-blue-dark-rgb),0.7)] rounded ${pingClass()}`}
     >
       {getSignalIcon()}
-      <span className="text-xs text-fulgur-white">
-        {ping === -1 ? "-" : ping} ms
-      </span>
+      <span className="text-xs text-fulgur-white">{ping} ms</span>
     </div>
   );
 };

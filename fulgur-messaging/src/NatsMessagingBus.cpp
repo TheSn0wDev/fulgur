@@ -43,7 +43,7 @@ void NatsMessagingBus::subscribe(const std::string& topic, std::function<void(co
 void NatsMessagingBus::loadConfig(const std::string& configPath) {
     std::ifstream file(configPath);
     if (!file.is_open()) {
-        std::cerr << "Could not open config file." << std::endl;
+        std::cerr << "Could not open config file " << configPath << "." << std::endl;
         return;
     }
     

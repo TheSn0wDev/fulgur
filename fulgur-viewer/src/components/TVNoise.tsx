@@ -2,7 +2,7 @@ export const TVNoise = () => {
   return (
     <>
       <div id="tv-noise" className="z-0"></div>
-      <svg className="w-0 h-0">
+      <svg className="w-0 h-0 z-0">
         <filter id="noise">
           <feTurbulence id="turbulence">
             <animate

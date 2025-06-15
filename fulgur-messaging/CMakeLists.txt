@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.31)
+cmake_minimum_required(VERSION 3.25.1)
 project(fulgur-messaging VERSION 1.0 LANGUAGES CXX)
 
 add_library(fulgur-messaging STATIC

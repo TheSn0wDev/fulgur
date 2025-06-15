@@ -11,6 +11,7 @@ interface BatteryProps {
   isCharging: boolean;
 }
 
+// TODO: Implement level from raspberry
 export const Battery = ({ batteryLevel, isCharging }: BatteryProps) => {
   const getBatteryIcon = () => {
     if (isCharging) return <BatteryCharging size={20} />;
